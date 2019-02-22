@@ -68,5 +68,18 @@ fun main() {
     val listaCursosSistemas = listaCursos.filter{ it.contains("Sistemas") }
     listaCursosSistemas.withIndex().forEach(g)
 
+    println("Set e MutableSet")
+    val setCursos: MutableSet<String> = mutableSetOf<String>("ADS", "SDM", "TII")
+    setCursos.add("ADS")
+    setCursos.add("SDM")
+    setCursos.add("TMA")
+
+    setCursos.forEach { println(it) }
+
+
+
+
+
+
 
 }
