@@ -26,11 +26,23 @@ fun List<String>.paraCadaString(funcao: (String) -> String): List<String> {
     return listaStrings
 }
 
+fun <T> List<T>.paraCada(funcao: (T) -> T): List<T> {
+    val lista: MutableList<T> = mutableListOf()
+
+    this.forEach { lista.add(funcao(it)) }
+
+    return lista
+}
+
 fun primeiraLetra(str: String): String {
     return str.first().toString()
 }
 fun ultimaLetra(str: String): String {
     return str.last().toString()
+}
+
+fun incrementa(i: Int): Int {
+    return i + 1
 }
 
 fun main() {
@@ -40,13 +52,16 @@ fun main() {
 
     // Exemplo 2
     val listaNomes: List<String> = listOf("Pedro", "João", "Maria", "José")
-    var listaPrimeiraLetra: List<String> = listaNomes.paraCadaString(::primeiraLetra)
-    var listaUltimaLetra: List<String> = listaNomes.paraCadaString(::ultimaLetra)
+    var listaPrimeiraLetra: List<String> = listaNomes.paraCada(::primeiraLetra)
+    var listaUltimaLetra: List<String> = listaNomes.paraCada(::ultimaLetra)
 
     listaPrimeiraLetra.forEach(::println)
     listaPrimeiraLetra.forEach() {println(it)}
     listaPrimeiraLetra.forEach {println(it)}
 
+    val listaInteiros: List<Int> = (1..10).toList()
+    val listaIncrementos: List<Int> = listaInteiros.paraCada(::incrementa)
+    listaIncrementos.forEach { println(it) }
 
 
 
