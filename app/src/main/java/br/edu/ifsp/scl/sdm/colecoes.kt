@@ -76,7 +76,36 @@ fun main() {
 
     setCursos.forEach { println(it) }
 
+    println("Map e MutableMap")
+    val familiaMap: MutableMap<String, String> = mutableMapOf(Pair("Pai", "Pedro"), Pair("Mãe", "Marcela"))
+    familiaMap.put("Filho", "João")
+    familiaMap.put("Caçula", "Cadu")
+    familiaMap.put("Pet", "Paçoca")
 
+    // Solução 1
+    for (chave in familiaMap.keys) {
+        println("${chave} - ${familiaMap.get(chave)}")
+    }
+
+    // Solução 2
+    familiaMap.keys.forEach { println("${it} - ${familiaMap.get(it)}") }
+
+    // Solução 3
+    fun percorreMap(par: Map.Entry<String, String>): Unit {
+        println("${par.key} - ${par.value}")
+    }
+    familiaMap.forEach(::percorreMap)
+
+
+    // Solução 4
+    val percorreMap: (String, String) -> Unit = fun (k, v) {
+        println("$k - $v")
+    }
+
+    familiaMap.forEach(percorreMap)
+
+    // Solução 5
+    familiaMap.forEach { t, u ->  println("$t - $u")}
 
 
 
